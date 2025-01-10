@@ -165,3 +165,74 @@ def atualizar_time_classificacao(nome_time: str, pontos: int):
 - **Classificação**: A rota `GET /classificacao/` retorna a classificação dos times com base nos pontos acumulados.
 - **Listagem de Times e Jogos**: A rota `GET /times/` lista todos os times cadastrados e `GET /jogos/` lista todos os jogos registrados.
 
+ Explicando como rodar o projeto com Docker:
+
+---
+
+# **FastAPI Campeonato**
+
+Este projeto utiliza **FastAPI** e **SQLAlchemy** para construir uma API simples. A aplicação pode ser executada localmente ou dentro de um ambiente Docker. Abaixo estão as instruções para rodar o projeto utilizando Docker.
+
+---
+
+## **Pré-requisitos**
+
+Certifique-se de que os seguintes softwares estão instalados em sua máquina:
+
+- [Docker](https://www.docker.com/get-started) (versão mais recente)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+---
+
+## **Como Rodar o Projeto com Docker**
+
+### **1. Clone o Repositório**
+Clone o projeto para o seu ambiente local:
+```bash
+git clone https://github.com/GuilhermeCarllos/FastapiCampeonato.git
+cd FastapiCampeonato
+```
+
+---
+
+### **2. Configure o Arquivo `.env` (Opcional)**
+Se o projeto utilizar variáveis de ambiente (por exemplo, para configurar o banco de dados), edite o arquivo `.env` na raiz do projeto ou crie um novo com os valores apropriados:
+```
+DATABASE_URL=sqlite:///./app.db
+```
+
+---
+
+### **3. Construa e Rode os Containers**
+Use o comando abaixo para construir e iniciar os containers:
+```bash
+docker-compose up --build
+```
+
+Este comando fará o seguinte:
+- Criará uma imagem Docker para o projeto.
+- Iniciará os serviços necessários (como banco de dados e aplicação FastAPI).
+
+---
+
+### **4. Acesse a Aplicação**
+Após iniciar os containers, a aplicação estará disponível em:
+- **API FastAPI**: [http://localhost:8000](http://localhost:8000)
+- **Documentação Swagger**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **Documentação ReDoc**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+
+---
+
+### **5. Parar os Containers**
+Para parar os containers, pressione `Ctrl + C` no terminal onde o Docker Compose está rodando. Em seguida, remova os containers:
+```bash
+docker-compose down
+```
+
+---
+
+### **6. Limpeza (Opcional)**
+Se desejar limpar os volumes e imagens gerados, execute:
+```bash
+docker system prune -a --volumes
+```
